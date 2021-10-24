@@ -37,10 +37,9 @@ void draw() {
   mainback.resize (600,800);
  image(back,bx,0); image(back,bx2,0);
 
-  if(game == 0) {
+  if(game == 0) { // Code derived from "gaspar coding" on Youtube
     jump += 1;
     y += jump;
-    if(x == -1800) x = 0;
     for(int i = 0 ; i < 2; i++) {
       imageMode(CORNER);
        rectMode(CENTER);
