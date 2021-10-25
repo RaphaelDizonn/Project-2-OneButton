@@ -1,4 +1,4 @@
-// Raphael Dizon #218038464
+// Josh Raphael Dizon #218038464
 // Project 2:  Flappy Bird (One Button Game)
  
 // This game is a Flappy Bird clone with a darker setting to it.
@@ -37,7 +37,9 @@ flappybird = loadImage("flappybird.png");
 
 }
 void draw() { 
- // background images
+ 
+  // background images
+  // https://bit-life.itch.io/free-parallax-clouds-background
   image(mainback,lx,0); image(mainback,lx,0);
   mainback.resize (600,800);
  image(back,bx,0); image(back,bx2,0);
@@ -49,7 +51,7 @@ void draw() {
       imageMode(CORNER);
        rectMode(CENTER);
        
-       //pipes
+       // pipes/wall used with rect
         rect( pipesx[i], pipesy[i] - (pipeHeight/2+100), pipeWidth, pipeHeight);
       rect(pipesx[i], pipesy[i] + (pipeHeight/2+100), pipeWidth, pipeHeight);
       if(pipesx[i] < 0) {
@@ -59,9 +61,12 @@ void draw() {
       if(pipesx[i] == birdCoord) total = max(++points, total); // code derived from "gaspar coding" on Youtube https://www.youtube.com/watch?v=UIlzIwqmOYE&t=585s
       if(y>height||y<0||(abs(birdCoord-pipesx[i])<25 && abs(y-pipesy[i])>100)) game=1;
       pipesx[i] -= 6;
+
+// points
 text("points: "+ points, 10, 20);
    
    // bird
+   // https://drawception.com/game/LB7bLsx91Z/depressing-flappy-bird/
     imageMode(CENTER);
     image(moody, birdCoord, y);
 imageMode(CORNER);
@@ -81,6 +86,7 @@ else{
 fill(255, 255, 255);
 
 }
+
 // PARALLAX BACKGROUND
 bx--; bx2--;
 if(bx<-600) {bx = 600;} if(bx2<-600) {bx2 = 600;}
