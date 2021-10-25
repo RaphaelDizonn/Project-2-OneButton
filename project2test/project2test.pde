@@ -5,7 +5,8 @@
 // CONTROLS: Click any key on your keyboard. Any key on your keyboard allows you to jump
 
 
-int game, points, total , x, y, jump;
+int game, points, total, jump;
+int x, y;
 int pipesx[] = new int[2], pipesy[] =new int[2]; 
 float pipeHeight = 799; // rect pipe height
 float pipeWidth = 35; // rect pipe width
@@ -33,6 +34,7 @@ back.resize (600,800);
 moody = loadImage("moody.png");
 moody.resize (65,65);
 flappybird = loadImage("flappybird.png");
+
 }
 void draw() { 
  // background images
@@ -46,6 +48,8 @@ void draw() {
     for(int i = 0 ; i < 2; i++) {
       imageMode(CORNER);
        rectMode(CENTER);
+       
+       //pipes
         rect( pipesx[i], pipesy[i] - (pipeHeight/2+100), pipeWidth, pipeHeight);
       rect(pipesx[i], pipesy[i] + (pipeHeight/2+100), pipeWidth, pipeHeight);
       if(pipesx[i] < 0) {
@@ -55,13 +59,17 @@ void draw() {
       if(pipesx[i] == birdCoord) total = max(++points, total); // code derived from "gaspar coding" on Youtube https://www.youtube.com/watch?v=UIlzIwqmOYE&t=585s
       if(y>height||y<0||(abs(birdCoord-pipesx[i])<25 && abs(y-pipesy[i])>100)) game=1;
       pipesx[i] -= 6;
- //   ellipse(150, y, 20, 20); // DEBUG
-
-  }
 text("points: "+ points, 10, 20);
+   
+   // bird
     imageMode(CENTER);
     image(moody, birdCoord, y);
 imageMode(CORNER);
+ 
+ // debug
+  //   ellipse(150, y, 20, 20);
+}
+
   }
 
 else{
