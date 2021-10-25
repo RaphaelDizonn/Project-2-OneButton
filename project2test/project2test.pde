@@ -34,7 +34,8 @@ moody.resize (65,65);
 
 }
 void draw() { 
- image(mainback,lx,0); image(mainback,lx,0);
+ // background images
+  image(mainback,lx,0); image(mainback,lx,0);
   mainback.resize (600,800);
  image(back,bx,0); image(back,bx2,0);
 
