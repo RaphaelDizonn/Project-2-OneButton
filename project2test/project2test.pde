@@ -40,6 +40,7 @@ void draw() {
  
   // background images
   // https://bit-life.itch.io/free-parallax-clouds-background
+  
   image(mainback,lx,0); image(mainback,lx,0);
   mainback.resize (600,800);
  image(back,bx,0); image(back,bx2,0);
@@ -67,6 +68,7 @@ text("points: "+ points, 10, 20);
    
    // bird
    // https://drawception.com/game/LB7bLsx91Z/depressing-flappy-bird/
+    
     imageMode(CENTER);
     image(moody, birdCoord, y);
 imageMode(CORNER);
