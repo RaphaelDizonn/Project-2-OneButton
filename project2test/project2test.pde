@@ -1,20 +1,20 @@
 // Raphael Dizon #218038464
 // Project 2:  Flappy Bird (One Button Game)
  
-// This game is a Flappy Bird clone with a little twist to it. 
+// This game is a Flappy Bird clone with a darker setting to it.
 // CONTROLS: Click any key on your keyboard. Any key on your keyboard allows you to jump
 
 
 int game, points, total , x, y, jump;
-int pipesx[] = new int[2], pipesy[] =new int[2];
-float pipeHeight = 799;
-float pipeWidth = 35;
-PImage back;
-int bx = 0, bx2 = 600;
-PImage mainback;
-PImage moody;
-int lx = 0, lx2 = 600;
-
+int pipesx[] = new int[2], pipesy[] =new int[2]; 
+float pipeHeight = 799; // rect pipe height
+float pipeWidth = 35; // rect pipe width
+PImage back; // clouds
+int bx = 0, bx2 = 600; // parallax setting
+PImage mainback; // background
+PImage moody; // bird
+int lx = 0, lx2 = 600; // parallax setting
+float birdCoord = 150; // coordinates for the bird = points
 
 void setup() {
    game = 1; 
@@ -50,13 +50,15 @@ void draw() {
         pipesy[i] = (int)random(200,height-200);
         pipesx[i] = width;
       }
-      if(pipesx[i] == width/2) total = max(++points, total); // code derived from "gaspar coding" on Youtube
-      if(y>height||y<0||(abs(150-pipesx[i])<25 && abs(y-pipesy[i])>100)) game=1;
+      if(pipesx[i] == birdCoord) total = max(++points, total); // code derived from "gaspar coding" on Youtube
+      if(y>height||y<0||(abs(birdCoord-pipesx[i])<25 && abs(y-pipesy[i])>100)) game=1;
       pipesx[i] -= 6;
+     text("points: "+ points, 10, 20);
 
   }
+
 imageMode(CENTER);
-    image(moody, 150, y);
+    image(moody, birdCoord, y);
  //   ellipse(150, y, 20, 20); // DEBUG
 imageMode(CORNER);
 // PARALLAX BACKGROUND
