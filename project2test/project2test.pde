@@ -73,6 +73,7 @@ imageMode(CORNER);
  
  // debug
   //   ellipse(150, y, 20, 20);
+
 }
 
   }
