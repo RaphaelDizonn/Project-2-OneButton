@@ -14,7 +14,7 @@ int bx = 0, bx2 = 600; // parallax setting
 PImage mainback; // background
 PImage moody; // bird
 int lx = 0, lx2 = 600; // parallax setting
-float birdCoord = 150; // coordinates for the bird = points
+float birdCoord = 150; // x coordinates for the bird = points
 
 void setup() {
    game = 1; 
