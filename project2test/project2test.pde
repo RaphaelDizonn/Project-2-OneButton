@@ -1,11 +1,12 @@
 // Raphael Dizon #218038464
-// Project 2:  Moody Flappy Bird (One Button Game)
+// Project 2:  Flappy Bird (One Button Game)
  
 // This game is a Flappy Bird clone with a little twist to it. 
 // CONTROLS: Click any key on your keyboard. Any key on your keyboard allows you to jump
 
 
-int game, points, highscore, x, y, jump, pipesx[] = new int[2], pipesy[] =new int[2];
+int game, points, total , x, y, jump;
+int pipesx[] = new int[2], pipesy[] =new int[2];
 float pipeHeight = 799;
 float pipeWidth = 35;
 PImage back;
@@ -18,7 +19,7 @@ int lx = 0, lx2 = 600;
 void setup() {
    game = 1; 
    points = 0; 
-   highscore = 0; 
+   total = 0; 
    jump = 0; 
   size(600,800,P2D);
   fill(0,0,0);
@@ -49,7 +50,7 @@ void draw() {
         pipesy[i] = (int)random(200,height-200);
         pipesx[i] = width;
       }
-      if(pipesx[i] == width/2) highscore = max(++points, highscore);
+      if(pipesx[i] == width/2) total = max(++points, total); // code derived from "gaspar coding" on Youtube
       if(y>height||y<0||(abs(150-pipesx[i])<25 && abs(y-pipesy[i])>100)) game=1;
       pipesx[i] -= 6;
 
