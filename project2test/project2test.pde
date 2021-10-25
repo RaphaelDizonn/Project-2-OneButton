@@ -97,6 +97,7 @@ if(bx<-600) {bx = 600;} if(bx2<-600) {bx2 = 600;}
 
 void keyReleased() { // any key on the keyboard allows to jump
   jump = -15; // change number to change height of jump
+  
   if(game==1) {
     pipesx[0] = 600;
     pipesy[0] = y = height/2;
