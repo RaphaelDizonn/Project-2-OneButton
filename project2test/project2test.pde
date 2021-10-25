@@ -15,6 +15,7 @@ PImage mainback; // background
 PImage moody; // bird
 int lx = 0, lx2 = 600; // parallax setting
 float birdCoord = 150; // x coordinates for the bird = points
+PImage flappybird; // for beginning screen
 
 void setup() {
    game = 1; 
@@ -31,7 +32,7 @@ back = loadImage ("l1_bg_1.png");
 back.resize (600,800);
 moody = loadImage("moody.png");
 moody.resize (65,65);
-
+flappybird = loadImage("flappybird.png");
 }
 void draw() { 
  // background images
@@ -39,7 +40,7 @@ void draw() {
   mainback.resize (600,800);
  image(back,bx,0); image(back,bx2,0);
 
-  if(game == 0) { // Code derived from "gaspar coding" on Youtube
+  if(game == 0) { // Code derived from "gaspar coding" on Youtube https://www.youtube.com/watch?v=UIlzIwqmOYE&t=585s
     jump += 1;
     y += jump;
     for(int i = 0 ; i < 2; i++) {
@@ -51,17 +52,27 @@ void draw() {
         pipesy[i] = (int)random(200,height-200);
         pipesx[i] = width;
       }
-      if(pipesx[i] == birdCoord) total = max(++points, total); // code derived from "gaspar coding" on Youtube
+      if(pipesx[i] == birdCoord) total = max(++points, total); // code derived from "gaspar coding" on Youtube https://www.youtube.com/watch?v=UIlzIwqmOYE&t=585s
       if(y>height||y<0||(abs(birdCoord-pipesx[i])<25 && abs(y-pipesy[i])>100)) game=1;
       pipesx[i] -= 6;
-     text("points: "+ points, 10, 20);
+ //   ellipse(150, y, 20, 20); // DEBUG
 
   }
-
-imageMode(CENTER);
+text("points: "+ points, 10, 20);
+    imageMode(CENTER);
     image(moody, birdCoord, y);
- //   ellipse(150, y, 20, 20); // DEBUG
 imageMode(CORNER);
+  }
+
+else{
+ 
+  // menu screen
+  text ("Click any key to start", 200, 500);
+    text ("Controls: Click any key to jump", 150, 600);
+
+fill(255, 255, 255);
+
+}
 // PARALLAX BACKGROUND
 bx--; bx2--;
 if(bx<-600) {bx = 600;} if(bx2<-600) {bx2 = 600;}
@@ -69,7 +80,6 @@ if(bx<-600) {bx = 600;} if(bx2<-600) {bx2 = 600;}
 }
  
 
-}
 void keyReleased() { // any key on the keyboard allows to jump
   jump = -15; // change number to change height of jump
   if(game==1) {
